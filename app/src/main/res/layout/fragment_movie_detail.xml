@@ -1,0 +1,130 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context="com.kennetht.annd.popularmovies.MovieDetailActivityFragment">
+
+    <ScrollView android:id="@+id/detail_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout android:id="@+id/detail_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="#006666">
+            <TextView android:id="@+id/detail_movieTitle"
+                android:layout_height="wrap_content"
+                android:text="@string/default_movieTitle"
+                android:layout_width="wrap_content"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:paddingTop="45dp"
+                android:paddingLeft="16dp"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="36sp"
+                android:textColor="#FFFFFF"></TextView>
+</FrameLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp">
+            <ImageView android:id="@+id/detail_moviePoster"
+                android:layout_height="@dimen/detail_image_height"
+                android:layout_width="@dimen/detail_image_width"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"></ImageView>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView android:id="@+id/detail_releaseDate"
+            android:text="@string/default_releaseDate"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/Text_Color_Black"
+            android:fontFamily="sans-serif-condensed"></TextView>
+
+        <TextView android:id="@+id/detail_rating"
+            android:text="@string/default_rating"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/Text_Color_Black"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingTop="5dp"></TextView>
+
+        <Button android:id="@+id/detail_favorite_button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="dummy_button_text"
+            android:fontFamily="sans-serif-condensed"></Button>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+            <TextView android:id="@+id/detail_overview"
+                android:text="@string/default_overview"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/Text_Color_Black"
+                android:padding="16dp"
+                android:fontFamily="sans-serif-condensed"></TextView>
+
+            <!-- Just a line divider -->
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/Text_Color_Black"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"></View>
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Videos: "
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/Text_Color_Black"
+                android:textSize="18sp"
+                android:padding="16dp"></TextView>
+
+            <LinearLayout android:id="@+id/trailer_container"
+                android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
+
+            <!-- Just a line divider -->
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/Text_Color_Black"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"></View>
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reviews: "
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/Text_Color_Black"
+                android:textSize="18sp"
+                android:padding="16dp"></TextView>
+
+            <LinearLayout android:id="@+id/review_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"></LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
+
