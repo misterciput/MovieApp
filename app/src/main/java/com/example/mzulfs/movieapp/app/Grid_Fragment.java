@@ -79,6 +79,7 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        updateMovies();
         grid = (RecyclerView) rootView.findViewById(R.id.grid_movies);
         movieRecyclerAdapter = new MovieRecyclerAdapter(getActivity(), globalMoviesList);
         grid.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -166,9 +167,9 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
     public void onResultFetch(ArrayList<MovieObject> movies) {
         if(movies != null) {
             //movieAdapter.clear();
-            /*for(int i = 0; i < movies.size(); i++) {
+            for(int i = 0; i < movies.size(); i++) {
                 globalMoviesList.add(movies.get(i));
-            }*/
+            }
 
             globalMoviesList = (ArrayList) movieRecyclerAdapter.getMovieList();
         }
