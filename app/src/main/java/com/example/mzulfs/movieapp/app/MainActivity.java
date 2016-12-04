@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements Grid_Fragment.Cal
         String curSortType = preferences.getString(getString(R.string.sortByKey), getString(R.string.popularity_desc));
 
         if(curSortType != null && !curSortType.equals(mSortType)) {
-            //sort type has changed, call the Grid_Fragment to update the movieData
             Grid_Fragment gf = (Grid_Fragment) getSupportFragmentManager().findFragmentById(R.id.fragment_grid);
             if(gf != null) {
                 gf.updateMovies();

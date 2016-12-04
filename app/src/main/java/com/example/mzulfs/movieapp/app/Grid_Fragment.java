@@ -27,7 +27,6 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
     private GridView grid;
     private static int mPosition = GridView.INVALID_POSITION;
 
-
     private CallbackMain mCallback;
 
     public Grid_Fragment() {
