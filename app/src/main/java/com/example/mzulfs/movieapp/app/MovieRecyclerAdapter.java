@@ -1,5 +1,6 @@
 package com.example.mzulfs.movieapp.app;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdapter.MovieViewHolder>{
     List<MovieObject> movieList;
+    private Context mContext;
 
     public class MovieViewHolder extends RecyclerView.ViewHolder{
         public ImageView imageView;
@@ -28,8 +30,9 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
         }
     }
 
-    public MovieRecyclerAdapter(List<MovieObject> movieList){
+    public MovieRecyclerAdapter(Context context, List<MovieObject> movieList){
         this.movieList = movieList;
+        this.mContext = context;
     }
 
 
@@ -53,7 +56,7 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
                 .build();
 
         holder.imageView.setAdjustViewBounds(true);
-        Picasso.with(holder.imageView.getContext()).load(uri.toString()).into(holder.imageView);
+        Picasso.with(mContext).load(uri.toString()).into(holder.imageView);
     }
 
     @Override

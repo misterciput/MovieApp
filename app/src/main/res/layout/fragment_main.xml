@@ -4,12 +4,12 @@
     android:gravity="center"
     tools:context=".MainActivityFragment">
 
-    <GridView android:id="@+id/grid_movies" android:layout_height="match_parent"
+    <android.support.v7.widget.RecyclerView android:id="@+id/grid_movies" android:layout_height="match_parent"
         android:layout_width="match_parent" android:numColumns="auto_fit"
         android:columnWidth="140dp" android:verticalSpacing="0dp"
         android:horizontalSpacing="0dp"
         android:stretchMode="columnWidth" android:gravity="center">
 
-    </GridView>
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

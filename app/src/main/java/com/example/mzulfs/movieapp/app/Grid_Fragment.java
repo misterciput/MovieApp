@@ -5,13 +5,14 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.mzulfs.movieapp.app.Data.FavoritesColumns;
@@ -22,9 +23,10 @@ import java.util.ArrayList;
 
 public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMovieFetch {
 
-    private MovieAdapter globalMovies;
+    private MovieAdapter movieAdapter;
+    private MovieRecyclerAdapter movieRecyclerAdapter;
     private ArrayList<MovieObject> globalMoviesList;
-    private GridView grid;
+    private RecyclerView grid;
     private static int mPosition = GridView.INVALID_POSITION;
 
     private CallbackMain mCallback;
@@ -77,16 +79,17 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        grid = (GridView)rootView.findViewById(R.id.grid_movies);
-
-            globalMovies = new MovieAdapter(
+        grid = (RecyclerView) rootView.findViewById(R.id.grid_movies);
+        movieRecyclerAdapter = new MovieRecyclerAdapter(getActivity(), globalMoviesList);
+        grid.setLayoutManager(new LinearLayoutManager(getActivity()));
+            /*movieAdapter = new MovieAdapter(
                     getActivity(),
                     R.layout.image_movie,
                     R.id.movie_imageview,
                     globalMoviesList
-            );
-            grid.setAdapter(globalMovies);
-            grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            );*/
+        grid.setAdapter(movieRecyclerAdapter);
+            /*grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -103,7 +106,7 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
                         mCallback.onMovieSelect(movieObject);
                     }
                 }
-            });
+            });*/
 
         if(savedInstanceState != null && savedInstanceState.containsKey("position")) {
             mPosition = savedInstanceState.getInt("position");
@@ -112,9 +115,9 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
         /*
         * smoother scrolling to where the user last clicked
          */
-        if(mPosition != GridView.INVALID_POSITION || mPosition >= globalMovies.getMovieList().size()) {
+       /* if(mPosition != GridView.INVALID_POSITION || mPosition >= movieAdapter.getMovieList().size()) {
             grid.smoothScrollToPosition(mPosition);
-        }
+        }*/
 
         return rootView;
     }
@@ -140,7 +143,7 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
     */
     public void insertFavGlobalMovieList() {
         Cursor cursor = getActivity().getContentResolver().query(MovieProvider.Favorites.CONTENT_URI, null, null, null, null);
-        globalMovies.clear();
+        /*movieAdapter.clear();*/
         if(cursor.getCount() > 0) {
             //begin inserting into globalMovie
             cursor.moveToFirst();
@@ -153,7 +156,7 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
                         cursor.getDouble(cursor.getColumnIndex(FavoritesColumns.USER_RATING)),
                         cursor.getString(cursor.getColumnIndex(FavoritesColumns.RELEASE_DATE))
                 );
-                globalMovies.add(movieObject);
+                globalMoviesList.add(movieObject);
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -162,12 +165,12 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
     @Override
     public void onResultFetch(ArrayList<MovieObject> movies) {
         if(movies != null) {
-            globalMovies.clear();
-            for(int i = 0; i < movies.size(); i++) {
-                globalMovies.add(movies.get(i));
-            }
+            //movieAdapter.clear();
+            /*for(int i = 0; i < movies.size(); i++) {
+                globalMoviesList.add(movies.get(i));
+            }*/
 
-            globalMoviesList = (ArrayList) globalMovies.getMovieList();
+            globalMoviesList = (ArrayList) movieRecyclerAdapter.getMovieList();
         }
     }
 
