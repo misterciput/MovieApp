@@ -142,7 +142,6 @@ public class Grid_Fragment extends Fragment implements FetchMovieData.callbackMo
         Cursor cursor = getActivity().getContentResolver().query(MovieProvider.Favorites.CONTENT_URI, null, null, null, null);
         globalMovies.clear();
         if(cursor.getCount() > 0) {
-            //begin inserting into globalMovie
             cursor.moveToFirst();
             do {
                 MovieObject movieObject = new MovieObject(
