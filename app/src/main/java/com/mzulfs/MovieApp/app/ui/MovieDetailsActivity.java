@@ -13,7 +13,6 @@ import butterknife.ButterKnife;
 public class MovieDetailsActivity extends BaseActivity {
 
     private static final String TAG = "MovieDetailsActivity";
-
     private Movie mMovie;
 
     @Override

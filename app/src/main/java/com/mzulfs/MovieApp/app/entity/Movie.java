@@ -36,11 +36,9 @@ public class Movie extends RealmObject {
 
     private Date releaseDate;
 
-    // relationships
     private RealmList<Review> reviews = new RealmList<>();
     private RealmList<Video> videos = new RealmList<>();
 
-    // transient fields are not serialized / deserialized by Gson
     private transient boolean isFavorite = false;
 
 

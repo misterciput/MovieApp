@@ -6,6 +6,7 @@
     <dimen name="margin_default">8dp</dimen>
     <dimen name="margin_large">16dp</dimen>
     <dimen name="margin_for_fab">88dp</dimen> <!-- fab_size + 2*margin_large -->
+    <dimen name="card_margin">5dp</dimen>
 
     <!-- specific view dimensions and spacing -->
     <dimen name="fab_size">56dp</dimen>

@@ -10,7 +10,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 
-public class PopularMoviesApplication extends Application {
+public class MovieApp extends Application {
 
     private static final int DB_SCHEMA_VERSION = 1;
     private static final String TAG = "Application";

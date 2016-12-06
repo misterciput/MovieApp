@@ -6,6 +6,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.mzulfs.MovieApp.app.BuildConfig;
 import com.mzulfs.MovieApp.app.entity.Movie;
 import com.mzulfs.MovieApp.app.entity.MovieResults;
 import com.mzulfs.MovieApp.app.entity.Review;
@@ -60,7 +61,7 @@ public class Model {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         mApiService = retrofit.create(MovieDBApiService.class);
-        mApiKey = "075c3ac2845f0a71e38797ec6f57cdfb";
+        mApiKey = BuildConfig.MOVIE_DB_API_KEY;
         getDataBus().register(this);
     }
 

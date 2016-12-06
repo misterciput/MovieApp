@@ -2,8 +2,7 @@ package com.mzulfs.MovieApp.app.entity;
 
 import java.util.List;
 
-// wrapper class needed by Retrofit to parse API responses from the Movie DB API
-// response is of the form: { "page": 1, "results": [...] }
+
 class Results<T> {
 
     private int page;
